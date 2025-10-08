@@ -1,33 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    // Envia a mensagem para o content.js pedindo a análise
     chrome.tabs.sendMessage(
       tabs[0].id,
       { action: "analisarPagina" },
       function (response) {
         const canvasContainer = document.getElementById("chart-container");
         const mensagemDiv = document.getElementById("mensagem");
+        const nomesContainer = document.getElementById(
+          "nomes-encontrados-container"
+        ); // << Pega a nova div de nomes
         const sugestoesContainer = document.getElementById(
           "sugestoes-container"
         );
 
-        // Verifica se a resposta do content.js veio e se contém dados
         if (response && response.dados && response.dados.length > 0) {
-          // --- PARTE 1: LÓGICA DO GRÁFICO ---
-
-          // Processa os dados para contar as etnias
+          // --- PARTE 1: LÓGICA DO GRÁFICO (sem alterações) ---
           const contagemEtnia = response.dados.reduce((acc, pessoa) => {
             acc[pessoa.etnia] = (acc[pessoa.etnia] || 0) + 1;
             return acc;
           }, {});
-
           const labels = Object.keys(contagemEtnia);
           const data = Object.values(contagemEtnia);
-
-          // Cria o gráfico
           const ctx = document.getElementById("meuGrafico").getContext("2d");
           new Chart(ctx, {
-            type: "doughnut",
+            /* ...Configuração do gráfico... */ type: "doughnut",
             data: {
               labels: labels,
               datasets: [
@@ -57,24 +53,27 @@ document.addEventListener("DOMContentLoaded", function () {
             },
           });
 
-          // --- PARTE 2: LÓGICA DAS SUGESTÕES ---
+          // --- NOVO BLOCO: LISTAR NOMES ENCONTRADOS ---
+          nomesContainer.innerHTML = "<h3>Personalidades Encontradas:</h3>";
+          const nomesArray = response.dados.map((pessoa) => pessoa.nome); // Pega apenas os nomes
+          const nomesString = nomesArray.join(", "); // Junta os nomes com vírgula
+          const p = document.createElement("p");
+          p.textContent = nomesString;
+          nomesContainer.appendChild(p);
 
-          // Adiciona um título à seção de sugestões
+          // --- PARTE 3: LÓGICA DAS SUGESTÕES (sem alterações) ---
           sugestoesContainer.innerHTML = "<h2>Para Saber Mais:</h2>";
-
-          // Para cada pessoa encontrada, cria e adiciona um link
           response.dados.forEach((pessoa) => {
             if (pessoa.sugestaoLink && pessoa.sugestaoLink.url) {
               const link = document.createElement("a");
               link.href = pessoa.sugestaoLink.url;
               link.textContent = pessoa.sugestaoLink.titulo;
-              link.target = "_blank"; // Para abrir em nova aba
-
+              link.target = "_blank";
               sugestoesContainer.appendChild(link);
             }
           });
         } else {
-          // Se não encontrar dados, mostra a mensagem de "nada encontrado"
+          // Mensagem de "nada encontrado" (sem alterações)
           canvasContainer.style.display = "none";
           mensagemDiv.innerHTML =
             "<p>Nenhuma personalidade do nosso banco de dados foi encontrada.</p>";

@@ -5,7 +5,23 @@
   <title>Análise de Representatividade</title>
   <style>
     body { width: 350px; font-family: sans-serif; }
-    #chart-container { padding: 10px; border-bottom: 1px solid #ccc; }
+    #chart-container { padding: 10px; }
+    /* Estilos para a nova seção */
+    #nomes-encontrados-container {
+      padding: 0 10px 10px 10px;
+      border-top: 1px solid #f0f0f0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    #nomes-encontrados-container h3 {
+      font-size: 14px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+    #nomes-encontrados-container p {
+      margin-top: 5px;
+      font-size: 13px;
+      color: #333;
+    }
     #sugestoes-container { padding: 0 10px 10px 10px; }
     #sugestoes-container h2 { font-size: 14px; margin-top: 10px;}
     #sugestoes-container a { display: block; margin-top: 8px; text-decoration: none; color: #2980b9; }
@@ -16,6 +32,8 @@
   <div id="chart-container">
     <canvas id="meuGrafico"></canvas>
   </div>
+
+  <div id="nomes-encontrados-container"></div>
 
   <div id="sugestoes-container"></div>
   
