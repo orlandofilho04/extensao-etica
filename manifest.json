@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Análise de Representatividade",
+  "version": "1.0",
+  "description": "Uma extensão de exemplo que mostra um Olá, Mundo!",
+  "icons": {
+    "48": "icon.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["banco-de-dados.js", "content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

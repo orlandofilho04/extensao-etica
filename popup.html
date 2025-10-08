@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Análise de Representatividade</title>
+  <style>
+    body { width: 350px; font-family: sans-serif; }
+    #chart-container { padding: 10px; border-bottom: 1px solid #ccc; }
+    #sugestoes-container { padding: 0 10px 10px 10px; }
+    #sugestoes-container h2 { font-size: 14px; margin-top: 10px;}
+    #sugestoes-container a { display: block; margin-top: 8px; text-decoration: none; color: #2980b9; }
+    #sugestoes-container a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div id="chart-container">
+    <canvas id="meuGrafico"></canvas>
+  </div>
+
+  <div id="sugestoes-container"></div>
+  
+  <div id="mensagem"></div>
+
+  <script src="chart.umd.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
