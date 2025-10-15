@@ -1,21 +1,36 @@
 let pessoasEncontradasNaPagina = [];
 
+// --- CRIAÇÃO DO TOOLTIP (só acontece uma vez) ---
+const tooltip = document.createElement("div");
+tooltip.id = "ar-tooltip"; // ar = Análise de Representatividade
+tooltip.style.position = "absolute";
+tooltip.style.display = "none";
+tooltip.style.border = "1px solid #ccc";
+tooltip.style.backgroundColor = "white";
+tooltip.style.padding = "10px";
+tooltip.style.borderRadius = "5px";
+tooltip.style.zIndex = "10000";
+tooltip.style.width = "250px";
+tooltip.style.boxShadow = "0 2px 5px rgba(0,0,0,0.2)";
+tooltip.style.fontFamily = "sans-serif";
+tooltip.style.fontSize = "14px";
+tooltip.style.color = "black";
+document.body.appendChild(tooltip);
+
 // Função principal que roda assim que o script é injetado
 function analisarEAtivar() {
   const textoDaPagina = document.body.innerText;
   let pessoasEncontradas = [];
 
-  // 1. Analisa o texto e encontra as personalidades
+  // 1. Analisa e encontra as personalidades
   bancoDeDados.forEach((pessoa) => {
-    // Usamos uma expressão regular para encontrar o nome completo, evitando falsos positivos
-    // A flag 'g' garante que todas as ocorrências sejam encontradas
     const regex = new RegExp(`\\b${pessoa.nome}\\b`, "g");
     if (textoDaPagina.match(regex)) {
       pessoasEncontradas.push(pessoa);
     }
   });
 
-  pessoasEncontradasNaPagina = pessoasEncontradas; // Salva para uso posterior pelo popup
+  pessoasEncontradasNaPagina = pessoasEncontradas;
 
   // 2. Envia a contagem para o background script (para o badge)
   chrome.runtime.sendMessage({
@@ -23,22 +38,24 @@ function analisarEAtivar() {
     count: pessoasEncontradas.length,
   });
 
-  // 3. Se encontrou alguém, começa o processo de destacar
+  // 3. Se encontrou alguém, destaca os nomes
   if (pessoasEncontradas.length > 0) {
-    const nomes = pessoasEncontradas.map((p) => p.nome);
-    destacarNomes(document.body, nomes);
+    destacarNomes(document.body, pessoasEncontradas);
   }
 }
 
-// Função mágica para destacar os nomes sem quebrar o HTML da página
-function destacarNomes(elemento, nomes) {
-  const regex = new RegExp(`\\b(${nomes.join("|")})\\b`, "gi");
+// Função para destacar os nomes
+function destacarNomes(elemento, pessoas) {
+  // Cria um mapa de nome -> pessoa para acesso rápido
+  const pessoasMap = new Map(pessoas.map((p) => [p.nome.toLowerCase(), p]));
+  const nomesRegex = new RegExp(
+    `\\b(${pessoas.map((p) => p.nome).join("|")})\\b`,
+    "gi"
+  );
 
-  // Percorre todos os "nós" do HTML da página
   const treeWalker = document.createTreeWalker(elemento, NodeFilter.SHOW_TEXT);
   let nósDeTexto = [];
   while (treeWalker.nextNode()) {
-    // Adiciona apenas os nós que não estão dentro de tags de script ou estilo
     if (
       treeWalker.currentNode.parentElement.tagName !== "SCRIPT" &&
       treeWalker.currentNode.parentElement.tagName !== "STYLE"
@@ -47,26 +64,63 @@ function destacarNomes(elemento, nomes) {
     }
   }
 
-  // Para cada nó de texto, substitui o nome por uma tag <mark>
   nósDeTexto.forEach((nó) => {
     const texto = nó.nodeValue;
-    if (regex.test(texto)) {
+    if (nomesRegex.test(texto)) {
       const novoSpan = document.createElement("span");
-      novoSpan.innerHTML = texto.replace(regex, (match) => {
-        return `<mark style="background-color: #FFDE59; padding: 2px; border-radius: 3px;">${match}</mark>`;
+      // A mágica acontece aqui: criamos uma tag <mark> com 'data-attributes'
+      novoSpan.innerHTML = texto.replace(nomesRegex, (match) => {
+        const pessoa = pessoasMap.get(match.toLowerCase());
+        // Codificamos a bio para evitar problemas com aspas
+        const bioCodificada = pessoa.bioCurta.replace(/"/g, "&quot;");
+        return `<mark class="ar-destaque" data-bio="${bioCodificada}" data-imagem="${pessoa.imagemUrl}" style="background-color: #FFDE59; padding: 2px; border-radius: 3px; cursor: pointer;">${match}</mark>`;
       });
       nó.parentNode.replaceChild(novoSpan, nó);
     }
   });
 }
 
-// Ouve o pedido do popup (esta parte continua a mesma)
+// --- CONTROLE DO TOOLTIP COM O MOUSE ---
+
+document.body.addEventListener("mouseover", function (e) {
+  // Se o mouse está sobre um dos nossos destaques
+  if (e.target.classList.contains("ar-destaque")) {
+    const bio = e.target.getAttribute("data-bio");
+    const imagem = e.target.getAttribute("data-imagem");
+
+    // Monta o HTML interno do tooltip
+    tooltip.innerHTML = `
+      <img src="${imagem}" style="width: 100%; height: 120px; object-fit: cover; border-radius: 3px;">
+      <p style="margin: 5px 0 0 0;">${bio}</p>
+    `;
+
+    // Posiciona o tooltip perto do mouse
+    tooltip.style.left = e.pageX + 15 + "px";
+    tooltip.style.top = e.pageY + 15 + "px";
+    tooltip.style.display = "block";
+  }
+});
+
+document.body.addEventListener("mouseout", function (e) {
+  // Se o mouse sair de um dos nossos destaques, esconde o tooltip
+  if (e.target.classList.contains("ar-destaque")) {
+    tooltip.style.display = "none";
+  }
+});
+
+// Move o tooltip junto com o mouse
+document.body.addEventListener("mousemove", function (e) {
+  if (tooltip.style.display === "block") {
+    tooltip.style.left = e.pageX + 15 + "px";
+    tooltip.style.top = e.pageY + 15 + "px";
+  }
+});
+
+// Ouve o pedido do popup (continua igual)
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.action === "analisarPagina") {
-    // Simplesmente envia os dados que já analisamos quando a página carregou
     sendResponse({ dados: pessoasEncontradasNaPagina });
   }
-  // Retornar true é importante para indicar que a resposta será assíncrona
   return true;
 });
 
