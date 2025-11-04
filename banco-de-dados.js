@@ -10,10 +10,10 @@ const bancoDeDados = [
     bioCurta:
       "Advogado, filósofo e Ministro dos Direitos Humanos do Brasil. Autor de obras influentes como 'Racismo Estrutural'.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Silvio_Almeida_em_2023.jpg/800px-Silvio_Almeida_em_2023.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/02.01.2023_-_Posse_de_Silvio_Almeida%2C_Ministro_de_Estado_dos_Direitos_Humanos_e_Cidadania_%2852626896288%29_%28cropped%29.jpg/250px-02.01.2023_-_Posse_de_Silvio_Almeida%2C_Ministro_de_Estado_dos_Direitos_Humanos_e_Cidadania_%2852626896288%29_%28cropped%29.jpg",
     sugestaoLink: {
       titulo: "Artigo: 'O que é racismo Estrutural?' - Geledés",
-      url: "https://www.geledes.org.br/o-que-e-racismo-estrutural-de-silvio-almeida/",
+      url: "https://pt.wikipedia.org/wiki/Silvio_Almeida",
     },
   },
   {
@@ -26,8 +26,8 @@ const bancoDeDados = [
     imagemUrl:
       "https://upload.wikimedia.org/wikipedia/commons/3/3d/Ailton_Krenak_%285269420566%29_%28cropped%29.jpg",
     sugestaoLink: {
-      titulo: "'Ideias para Adiar o Fim do Mundo' - Companhia das Letras",
-      url: "https://www.companhiadasletras.com.br/livro/9788535932158/ideias-para-adiar-o-fim-do-mundo",
+      titulo: "Ailton Krenak - Academia Brasileira de Letras",
+      url: "https://www.academia.org.br/academicos/ailton-krenak",
     },
   },
   {
@@ -38,10 +38,10 @@ const bancoDeDados = [
     bioCurta:
       "Filósofa, feminista e escritora. Autora de best-sellers como 'Pequeno Manual Antirracista', é uma importante voz na luta antirracista.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Djamila_Ribeiro_em_2017_%282%29.jpg/800px-Djamila_Ribeiro_em_2017_%282%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Djamila_Ribeiro.jpg/330px-Djamila_Ribeiro.jpg",
     sugestaoLink: {
-      titulo: "Selo Sueli Carneiro, fundado por Djamila Ribeiro",
-      url: "https://www.selosuelicarneiro.com.br/",
+      titulo: "Site Oficial de Djamila Ribeiro",
+      url: "https://www.djamilaribeiro.com.br/",
     },
   },
   {
@@ -52,10 +52,10 @@ const bancoDeDados = [
     bioCurta:
       "Filósofa, escritora e uma das maiores ativistas do movimento negro no Brasil. Fundadora do Geledés – Instituto da Mulher Negra.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Sueli_Carneiro_no_Sesc_24_de_Maio.jpg/800px-Sueli_Carneiro_no_Sesc_24_de_Maio.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Sueli-carneiro-foto-andre-seiti-e1521580460291.jpg/250px-Sueli-carneiro-foto-andre-seiti-e1521580460291.jpg",
     sugestaoLink: {
-      titulo: "Biografia de Sueli Carneiro - Geledés",
-      url: "https://www.geledes.org.br/sueli-carneiro-biografia/",
+      titulo: "Biografia de Sueli Carneiro - Acervo Casa Sueli Carneiro",
+      url: "https://acervo.casasuelicarneiro.org.br/biografia",
     },
   },
   {
@@ -66,11 +66,11 @@ const bancoDeDados = [
     bioCurta:
       "Intelectual, política e antropóloga. Foi uma figura pioneira nos estudos sobre a cultura negra no Brasil e no feminismo negro.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/pt/thumb/c/cd/L%C3%A9lia_Gonzalez_em_1986.jpg/800px-L%C3%A9lia_Gonzalez_em_1986.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/L%C3%A9lia_Gonzalez_by_Cezar_Loureiro.jpg/250px-L%C3%A9lia_Gonzalez_by_Cezar_Loureiro.jpg",
     sugestaoLink: {
       titulo:
-        "Lélia Gonzalez: a amefricanidade e o feminismo negro - Politize!",
-      url: "https://www.politize.com.br/lelia-gonzalez-amefricanidade-feminismo-negro/",
+        "Lélia Gonzalez - Enciclopédia de Antropologia",
+      url: "https://ea.fflch.usp.br/autor/lelia-gonzalez",
     },
   },
   {
@@ -81,10 +81,10 @@ const bancoDeDados = [
     bioCurta:
       "Escritora e linguista, uma das mais importantes da literatura contemporânea. Conhecida pelo conceito de 'escrevivência'.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Concei%C3%A7%C3%A3o_Evaristo_na_FLUP_2017.jpg/800px-Concei%C3%A7%C3%A3o_Evaristo_na_FLUP_2017.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Concei%C3%A7%C3%A3o_Evaristo%2C_September_2024.jpg/250px-Concei%C3%A7%C3%A3o_Evaristo%2C_September_2024.jpg",
     sugestaoLink: {
       titulo: "Enciclopédia Itaú Cultural - Conceição Evaristo",
-      url: "https://enciclopedia.itaucultural.org.br/pessoa423589/conceicao-evaristo",
+      url: "https://enciclopedia.itaucultural.org.br/pessoas/1667-conceicao-evaristo#:~:text=Nasce%20em%20uma%20comunidade%20no,%C3%A9%20aprovada%20para%20o%20magist%C3%A9rio.",
     },
   },
   {
@@ -95,7 +95,7 @@ const bancoDeDados = [
     bioCurta:
       "Ativista, escritor e artista plástico. Foi um dos maiores expoentes da cultura e dos direitos do povo negro no século XX.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Abdias_do_Nascimento.jpg/800px-Abdias_do_Nascimento.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Abdias_do_Nascimento_senador.jpg/260px-Abdias_do_Nascimento_senador.jpg",
     sugestaoLink: {
       titulo: "Acervo Digital Abdias do Nascimento - IPEAFRO",
       url: "https://ipeafro.org.br/",
@@ -109,10 +109,10 @@ const bancoDeDados = [
     bioCurta:
       "Xamã e porta-voz do povo Yanomami. Co-autor do livro 'A Queda do Céu', um marco da cosmologia e da luta indígena.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Davi_Kopenawa_Yanomami.jpg/800px-Davi_Kopenawa_Yanomami.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Davi_Kopenawa_Yanomami_at_2024_Cannes_Film_Festival_for_The_Falling_Sky_%28cropped%29.jpg/250px-Davi_Kopenawa_Yanomami_at_2024_Cannes_Film_Festival_for_The_Falling_Sky_%28cropped%29.jpg",
     sugestaoLink: {
-      titulo: "'A Queda do Céu', livro de Davi Kopenawa e Bruce Albert",
-      url: "https://www.companhiadasletras.com.br/livro/9788535926225/a-queda-do-ceu",
+      titulo: "Biografia de Davi Kopenawa - Survival Brasil",
+      url: "https://www.survivalbrasil.org/informacao/davibiografia",
     },
   },
   {
@@ -123,11 +123,11 @@ const bancoDeDados = [
     bioCurta:
       "Geógrafo renomado e um dos maiores intelectuais do Brasil. Conhecido por sua análise crítica da globalização.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Miltong.jpg/800px-Miltong.jpg",
+      "https://miltonsantos.com.br/site/wp-content/uploads/2011/04/23-300x214.jpg",
     sugestaoLink: {
       titulo:
-        "Documentário 'Milton Santos e o Mundo Global Visto do Lado de Cá'",
-      url: "https://www.youtube.com/watch?v=JcWEm2w-2-M",
+        "Site Oficial Milton Santos - Vida e Obra",
+      url: "https://miltonsantos.com.br/site/",
     },
   },
   {
@@ -138,11 +138,11 @@ const bancoDeDados = [
     bioCurta:
       "Escritora, autora do best-seller 'Quarto de Despejo: Diário de uma Favelada', um relato contundente da vida na favela.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/2/2a/Carolina_Maria_de_Jesus_em_1961.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Carolina_Maria_de_Jesus_assinando_seu_livro_Quarto_de_Despejo_em_1960.jpg/250px-Carolina_Maria_de_Jesus_assinando_seu_livro_Quarto_de_Despejo_em_1960.jpg",
     sugestaoLink: {
       titulo:
-        "Exposição Virtual 'Carolina Maria de Jesus: Um Brasil para os brasileiros'",
-      url: "https://www.ims.com.br/exposicao/carolina-maria-de-jesus-um-brasil-para-os-brasileiros-ims-paulista/",
+        "Exposição 'Carolina Maria de Jesus: Um Brasil para os Brasileiros' - SESC Rio Preto",
+      url: "https://ims.com.br/exposicao/carolina-maria-de-jesus-um-brasil-para-os-brasileiros-sesc-rio-preto/",
     },
   },
 
@@ -157,7 +157,7 @@ const bancoDeDados = [
     bioCurta:
       "Socióloga e política, foi vereadora no Rio de Janeiro. Sua vida foi marcada pela defesa dos direitos humanos, sendo brutalmente assassinada em 2018.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Marielle_Franco_em_junho_de_2017.jpg/800px-Marielle_Franco_em_junho_de_2017.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Marielle_Franco.jpg/250px-Marielle_Franco.jpg",
     sugestaoLink: {
       titulo: "Instituto Marielle Franco",
       url: "https://www.institutomariellefranco.org/",
@@ -185,7 +185,7 @@ const bancoDeDados = [
     bioCurta:
       "Educadora e Ministra da Igualdade Racial do Brasil. Irmã de Marielle Franco, dá continuidade ao seu legado através do Instituto e da política.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Anielle_Franco_em_2023.jpg/800px-Anielle_Franco_em_2023.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/2023-01-26_Anielle_Franco.JPG/250px-2023-01-26_Anielle_Franco.JPG",
     sugestaoLink: {
       titulo: "Ministério da Igualdade Racial",
       url: "https://www.gov.br/igualdaderacial/pt-br",
@@ -199,10 +199,10 @@ const bancoDeDados = [
     bioCurta:
       "Ativista e deputada federal. É uma forte defensora da educação indígena e dos direitos territoriais de seu povo.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/C%C3%A9lia_Xakriab%C3%A1_%2852685233931%29.jpg/800px-C%C3%A9lia_Xakriab%C3%A1_%2852685233931%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Liniker_%2B_Tulipa_Ruiz_%2852188211872%29_%28cropped%29.jpg/250px-Liniker_%2B_Tulipa_Ruiz_%2852188211872%29_%28cropped%29.jpg",
     sugestaoLink: {
-      titulo: "Perfil na Câmara dos Deputados",
-      url: "https://www.camara.leg.br/deputados/220556/biografia",
+      titulo: "Site Oficial de Célia Xakriabá",
+      url: "https://www.celiaxakriaba.com/",
     },
   },
   {
@@ -213,10 +213,10 @@ const bancoDeDados = [
     bioCurta:
       "Primeira mulher indígena a se formar em direito no Brasil e a ser eleita deputada federal. Atualmente, preside a FUNAI.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Joenia_Wapichana_em_2019.jpg/800px-Joenia_Wapichana_em_2019.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/2023-08-04_Joenia_Wapichana_%28cropped%29.jpg/250px-2023-08-04_Joenia_Wapichana_%28cropped%29.jpg",
     sugestaoLink: {
-      titulo: "Joenia Wapichana assume a presidência da Funai - GOV.BR",
-      url: "https://www.gov.br/funai/pt-br/assuntos/noticias/2023/joenia-wapichana-assume-a-presidencia-da-funai",
+      titulo: "Joenia Wapichana toma posse e é a primeira indígena a comandar a FUNAI - APIB",
+      url: "https://apiboficial.org/2023/02/03/joenia-wapichana-tome-posse-e-e-a-primeira-indigena-a-comandar-a-funai/",
     },
   },
   {
@@ -227,10 +227,10 @@ const bancoDeDados = [
     bioCurta:
       "Líder do povo Kayapó, é uma figura mundialmente reconhecida pela sua luta pela preservação da Amazônia e dos povos indígenas.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Chief_Raoni_in_2018.jpg/800px-Chief_Raoni_in_2018.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Cacique_Raoni_%282013%29.jpg/250px-Cacique_Raoni_%282013%29.jpg",
     sugestaoLink: {
-      titulo: "Instituto Raoni",
-      url: "https://www.institutoraoni.org/",
+      titulo: "Biografia de Raoni Metuktire - Cartas Indígenas São Brasil",
+      url: "https://cartasindigenasaobrasil.com.br/biografia/raoni-metuktire/",
     },
   },
 
@@ -247,8 +247,8 @@ const bancoDeDados = [
     imagemUrl:
       "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSyMF5XICWdvxxGifuUGfUo9O354_Gc0EoWsNKHgEPjl99v_6EXgB9ZbLElp-fbHOGtWF9pJxDmB44ECFVCbJZenewU4eQL9qeMUe1mhsYY",
     sugestaoLink: {
-      titulo: "Fundação Cultural Palmares - Quem foi Zumbi",
-      url: "https://www.palmares.gov.br/?p=57551",
+      titulo: "Zumbi dos Palmares - Herói Nacional",
+      url: "https://www.gov.br/palmares/pt-br/assuntos/noticias/zumbi-heroi-nacional",
     },
   },
   {
@@ -259,10 +259,10 @@ const bancoDeDados = [
     bioCurta:
       "Guerreira e líder feminina no Quilombo dos Palmares. Lutou ao lado de Zumbi e foi fundamental na resistência do quilombo.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Est%C3%A1tua_de_Dandara_dos_Palmares.jpg/800px-Est%C3%A1tua_de_Dandara_dos_Palmares.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQea1Je_bKkveoB_TnTeK5eZqbAsvlpXOyxdA&s",
     sugestaoLink: {
-      titulo: "Dandara dos Palmares, a heroína que o Brasil esqueceu - El País",
-      url: "https://brasil.elpais.com/brasil/2019/02/19/politica/1550598822_369762.html",
+      titulo: "Dandara dos Palmares - Ebiografia",
+      url: "https://www.ebiografia.com/dandara_dos_palmares/",
     },
   },
   {
@@ -273,11 +273,11 @@ const bancoDeDados = [
     bioCurta:
       "Advogado autodidata, jornalista e escritor. Um dos maiores abolicionistas, libertou mais de 500 pessoas escravizadas através da lei.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Luiz_Gama_3.jpg/800px-Luiz_Gama_3.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Luiz_Gama_perfil.jpg/250px-Luiz_Gama_perfil.jpg",
     sugestaoLink: {
       titulo:
         "Luiz Gama, o advogado que libertou 500 escravos - Aventuras na História",
-      url: "https://aventurasnahistoria.uol.com.br/noticias/reportagem/luiz-gama-o-advogado-que-libertou-500-escravos-e-nunca-se-formou-em-direito.phtml",
+      url: "https://aventurasnahistoria.com.br/noticias/reportagem/luiz-gama-o-advogado-que-libertou-mais-de-500-escravizados.phtml",
     },
   },
   {
@@ -291,7 +291,7 @@ const bancoDeDados = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Machado_de_Assis_by_Marc_Ferrez.jpg/250px-Machado_de_Assis_by_Marc_Ferrez.jpg",
     sugestaoLink: {
       titulo: "Projeto 'Machado de Assis Negro' resgata a imagem do autor",
-      url: "https://www.correiobraziliense.com.br/diversao-e-arte/2021/05/4924296-projeto-machado-de-assis-negro-resgata-a-imagem-real-do-autor.html",
+      url: "https://aventurasnahistoria.com.br/noticias/reportagem/machado-de-assis-conheca-o-grande-erro-de-seculos-com-a-imagem-do-bruxo-do-cosme-velho.phtml",
     },
   },
 
@@ -306,10 +306,10 @@ const bancoDeDados = [
     bioCurta:
       "Rapper, cantor e escritor, é um dos artistas mais influentes de sua geração, conhecido por suas letras socialmente conscientes.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Emicida_-_2019_%2848911578326%29_%28cropped%29.jpg/800px-Emicida_-_2019_%2848911578326%29_%28cropped%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Emicida_Festival_Sensacional_2020_%28cropped%29.jpg/250px-Emicida_Festival_Sensacional_2020_%28cropped%29.jpg",
     sugestaoLink: {
-      titulo: "Documentário 'AmarElo - É Tudo Pra Ontem' - Netflix",
-      url: "https://www.netflix.com/title/81223964",
+      titulo: "Site Oficial de Emicida",
+      url: "https://emicida.com.br/",
     },
   },
   {
@@ -320,10 +320,10 @@ const bancoDeDados = [
     bioCurta:
       "Ator, diretor e escritor. Um dos artistas mais conhecidos do Brasil, atua fortemente no debate sobre questões raciais.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/L%C3%A1zaro_Ramos_em_2017.jpg/800px-L%C3%A1zaro_Ramos_em_2017.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/L%C3%A1zaro_Ramos_01.jpg/250px-L%C3%A1zaro_Ramos_01.jpg",
     sugestaoLink: {
-      titulo: "Livro 'Na Minha Pele' - Companhia das Letras",
-      url: "https://www.companhiadasletras.com.br/livro/9788547000427/na-minha-pele",
+      titulo: "Site Oficial de Lázaro Ramos",
+      url: "https://lazaroramos.com.br/",
     },
   },
   {
@@ -350,8 +350,8 @@ const bancoDeDados = [
     imagemUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Elza_Soares_recebendo_o_diploma_de_Embaixatriz_do_Samba_no_Museu_da_Imagem_e_do_Sim%2C_com_Garrincha_ao_fundo_%28cropped%29.tif/339px-Elza_Soares_recebendo_o_diploma_de_Embaixatriz_do_Samba_no_Museu_da_Imagem_e_do_Sim%2C_com_Garrincha_ao_fundo_%28cropped%29.tif.jpg",
     sugestaoLink: {
-      titulo: "Biografia de Elza Soares - Site Oficial",
-      url: "https://www.elzasoares.com.br/biografia",
+      titulo: "Elza Soares - Ebiografia",
+      url: "https://www.ebiografia.com/elza_soares/",
     },
   },
   {
@@ -362,10 +362,10 @@ const bancoDeDados = [
     bioCurta:
       "Escritor e professor pertencente ao povo Munduruku. É um dos maiores nomes da literatura infanto-juvenil indígena no Brasil.",
     imagemUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Daniel_Munduruku_-_Bienal_do_Livro_de_Minas_2014.jpg/800px-Daniel_Munduruku_-_Bienal_do_Livro_de_Minas_2014.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Daniel_Munduruku%2C_May_2025.jpg/250px-Daniel_Munduruku%2C_May_2025.jpg",
     sugestaoLink: {
-      titulo: "Site Oficial de Daniel Munduruku",
-      url: "https://danielmunduruku.com.br/",
+      titulo: "Daniel Munduruku - Wikipédia",
+      url: "https://pt.wikipedia.org/wiki/Daniel_Munduruku",
     },
   },
 ];
