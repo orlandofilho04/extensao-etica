@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Análise de Representatividade",
   "version": "1.0",
-  "description": "Uma extensão de exemplo que mostra um Olá, Mundo!",
+  "description": "Destaque automaticamente nomes de personalidades negras e indígenas nos textos que você lê. Veja quem é quem com fotos, biografias instantâneas e gráficos de representatividade.",
   "icons": {
     "48": "icon.png"
   },
