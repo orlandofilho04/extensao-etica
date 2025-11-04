@@ -4,7 +4,7 @@
   "version": "1.0",
   "description": "Destaque automaticamente nomes de personalidades negras e indígenas nos textos que você lê. Veja quem é quem com fotos, biografias instantâneas e gráficos de representatividade.",
   "icons": {
-    "48": "icon.png"
+    "48": "128.png"
   },
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self';"
