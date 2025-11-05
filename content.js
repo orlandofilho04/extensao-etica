@@ -22,10 +22,22 @@ function analisarEAtivar() {
   const textoDaPagina = document.body.innerText;
   let pessoasEncontradas = [];
 
+  // Função para normalizar texto (remover acentos)
+  const normalizeText = (text) => {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  };
+
+  // Função para escapar caracteres especiais em regex
+  const escapeRegExp = (string) => {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  };
+
   // 1. Analisa e encontra as personalidades
   bancoDeDados.forEach((pessoa) => {
-    const regex = new RegExp(`\\b${pessoa.nome}\\b`, "g");
-    if (textoDaPagina.match(regex)) {
+    const nomeNormalizado = escapeRegExp(normalizeText(pessoa.nome));
+    const textoNormalizado = normalizeText(textoDaPagina);
+    const regex = new RegExp(`\\b${nomeNormalizado}\\b`, "gi");
+    if (textoNormalizado.match(regex)) {
       pessoasEncontradas.push(pessoa);
     }
   });
@@ -46,12 +58,32 @@ function analisarEAtivar() {
 
 // Função para destacar os nomes
 function destacarNomes(elemento, pessoas) {
+  // Função auxiliar para escapar caracteres especiais em regex
+  const escapeRegExp = (string) => {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  };
+
+  // Função para normalizar texto (remover acentos para comparação)
+  const normalizeText = (text) => {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  };
+
   // Cria um mapa de nome -> pessoa para acesso rápido
-  const pessoasMap = new Map(pessoas.map((p) => [p.nome.toLowerCase(), p]));
-  const nomesRegex = new RegExp(
-    `\\b(${pessoas.map((p) => p.nome).join("|")})\\b`,
-    "gi"
+  const pessoasMap = new Map(
+    pessoas.map((p) => [normalizeText(p.nome.toLowerCase()), p])
   );
+
+  // Prepara os nomes para a regex considerando variações com e sem acento
+  const nomesNormalizados = pessoas.map((p) => {
+    const nomeEscapado = escapeRegExp(p.nome);
+    const nomeNormalizado = normalizeText(p.nome);
+    return nomeEscapado === nomeNormalizado
+      ? nomeEscapado
+      : `(?:${nomeEscapado}|${escapeRegExp(nomeNormalizado)})`;
+  });
+
+  // Cria regex com todas as variações possíveis dos nomes
+  const nomesRegex = new RegExp(`\\b(${nomesNormalizados.join("|")})\\b`, "gi");
 
   const treeWalker = document.createTreeWalker(elemento, NodeFilter.SHOW_TEXT);
   let nósDeTexto = [];
@@ -70,7 +102,7 @@ function destacarNomes(elemento, pessoas) {
       const novoSpan = document.createElement("span");
       // A mágica acontece aqui: criamos uma tag <mark> com 'data-attributes'
       novoSpan.innerHTML = texto.replace(nomesRegex, (match) => {
-        const pessoa = pessoasMap.get(match.toLowerCase());
+        const pessoa = pessoasMap.get(normalizeText(match.toLowerCase()));
         // Codificamos a bio para evitar problemas com aspas
         const bioCodificada = pessoa.bioCurta.replace(/"/g, "&quot;");
         return `<mark class="ar-destaque" data-bio="${bioCodificada}" data-imagem="${pessoa.imagemUrl}" style="background-color: #FFDE59; padding: 2px; border-radius: 3px; cursor: pointer;">${match}</mark>`;

@@ -68,8 +68,7 @@ const bancoDeDados = [
     imagemUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/L%C3%A9lia_Gonzalez_by_Cezar_Loureiro.jpg/250px-L%C3%A9lia_Gonzalez_by_Cezar_Loureiro.jpg",
     sugestaoLink: {
-      titulo:
-        "Lélia Gonzalez - Enciclopédia de Antropologia",
+      titulo: "Lélia Gonzalez - Enciclopédia de Antropologia",
       url: "https://ea.fflch.usp.br/autor/lelia-gonzalez",
     },
   },
@@ -125,8 +124,7 @@ const bancoDeDados = [
     imagemUrl:
       "https://miltonsantos.com.br/site/wp-content/uploads/2011/04/23-300x214.jpg",
     sugestaoLink: {
-      titulo:
-        "Site Oficial Milton Santos - Vida e Obra",
+      titulo: "Site Oficial Milton Santos - Vida e Obra",
       url: "https://miltonsantos.com.br/site/",
     },
   },
@@ -215,7 +213,8 @@ const bancoDeDados = [
     imagemUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/2023-08-04_Joenia_Wapichana_%28cropped%29.jpg/250px-2023-08-04_Joenia_Wapichana_%28cropped%29.jpg",
     sugestaoLink: {
-      titulo: "Joenia Wapichana toma posse e é a primeira indígena a comandar a FUNAI - APIB",
+      titulo:
+        "Joenia Wapichana toma posse e é a primeira indígena a comandar a FUNAI - APIB",
       url: "https://apiboficial.org/2023/02/03/joenia-wapichana-tome-posse-e-e-a-primeira-indigena-a-comandar-a-funai/",
     },
   },
@@ -266,7 +265,7 @@ const bancoDeDados = [
     },
   },
   {
-    nome: "Luiz Gama",
+    nome: "Luís Gama",
     genero: "Homem",
     area: "Abolicionista/Direito",
     etnia: "Negro",
