@@ -1,4 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // --- INÍCIO DA NOVA LÓGICA DO INTERRUPTOR ---
+  const toggleSwitch = document.getElementById("toggle-switch");
+
+  // 1. Verificar o estado guardado e definir o interruptor
+  // Por defeito, a extensão está ATIVADA (true) se nada estiver guardado
+  chrome.storage.sync.get(["isExtensionActive"], function (storage) {
+    toggleSwitch.checked = storage.isExtensionActive !== false;
+  });
+
+  // 2. Ouvir mudanças no interruptor e guardar o novo estado
+  toggleSwitch.addEventListener("change", function () {
+    const isActive = toggleSwitch.checked;
+    chrome.storage.sync.set({ isExtensionActive: isActive }, function () {
+      // Recarrega a aba atual para aplicar a mudança imediatamente
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        chrome.tabs.reload(tabs[0].id);
+      });
+    });
+  });
+  // --- FIM DA NOVA LÓGICA DO INTERRUPTOR ---
+
+  // --- LÓGICA EXISTENTE DO POP-UP ---
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     chrome.tabs.sendMessage(
       tabs[0].id,
@@ -8,13 +30,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const mensagemDiv = document.getElementById("mensagem");
         const nomesContainer = document.getElementById(
           "nomes-encontrados-container"
-        ); // << Pega a nova div de nomes
+        );
         const sugestoesContainer = document.getElementById(
           "sugestoes-container"
         );
 
+        // Se a resposta veio E tem dados, mostramos os resultados
         if (response && response.dados && response.dados.length > 0) {
-          // --- PARTE 1: LÓGICA DO GRÁFICO (sem alterações) ---
+          // --- PARTE 1: LÓGICA DO GRÁFICO ---
           const contagemEtnia = response.dados.reduce((acc, pessoa) => {
             acc[pessoa.etnia] = (acc[pessoa.etnia] || 0) + 1;
             return acc;
@@ -23,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const data = Object.values(contagemEtnia);
           const ctx = document.getElementById("meuGrafico").getContext("2d");
           new Chart(ctx, {
-            /* ...Configuração do gráfico... */ type: "doughnut",
+            type: "doughnut",
             data: {
               labels: labels,
               datasets: [
@@ -53,15 +76,15 @@ document.addEventListener("DOMContentLoaded", function () {
             },
           });
 
-          // --- NOVO BLOCO: LISTAR NOMES ENCONTRADOS ---
+          // --- PARTE 2: LISTAR NOMES ENCONTRADOS ---
           nomesContainer.innerHTML = "<h3>Personalidades Encontradas:</h3>";
-          const nomesArray = response.dados.map((pessoa) => pessoa.nome); // Pega apenas os nomes
-          const nomesString = nomesArray.join(", "); // Junta os nomes com vírgula
+          const nomesArray = response.dados.map((pessoa) => pessoa.nome);
+          const nomesString = nomesArray.join(", ");
           const p = document.createElement("p");
           p.textContent = nomesString;
           nomesContainer.appendChild(p);
 
-          // --- PARTE 3: LÓGICA DAS SUGESTÕES (sem alterações) ---
+          // --- PARTE 3: LÓGICA DAS SUGESTÕES ---
           sugestoesContainer.innerHTML = "<h2>Para Saber Mais:</h2>";
           response.dados.forEach((pessoa) => {
             if (pessoa.sugestaoLink && pessoa.sugestaoLink.url) {
@@ -73,10 +96,23 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           });
         } else {
-          // Mensagem de "nada encontrado" (sem alterações)
+          // Se não houver resposta (extensão desligada) ou não encontrar dados
+
+          // Esconde as secções de dados
           canvasContainer.style.display = "none";
-          mensagemDiv.innerHTML =
-            "<p>Nenhuma personalidade do nosso banco de dados foi encontrada.</p>";
+          nomesContainer.style.display = "none";
+          sugestoesContainer.style.display = "none";
+
+          // Mostra a mensagem correta
+          chrome.storage.sync.get(["isExtensionActive"], function (storage) {
+            if (storage.isExtensionActive === false) {
+              mensagemDiv.innerHTML =
+                "<p>A extensão está desativada. Ligue-a no interruptor acima para analisar as páginas.</p>";
+            } else {
+              mensagemDiv.innerHTML =
+                "<p>Nenhuma personalidade da nossa base de dados foi encontrada.</p>";
+            }
+          });
         }
       }
     );
