@@ -4,7 +4,7 @@
   "version": "1.0",
   "description": "Uma extensão que analisa a representatividade de personalidades negras e indígenas em páginas web.",
 
-  "permissions": ["activeTab", "scripting", "storage", "tabs"],
+  "permissions": ["activeTab", "storage", "tabs"],
 
   "action": {
     "default_popup": "popup.html"
